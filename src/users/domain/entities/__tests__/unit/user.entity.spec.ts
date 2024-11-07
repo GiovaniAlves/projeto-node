@@ -1,4 +1,3 @@
-import { faker } from '@faker-js/faker'
 import { UserEntity, UserProps } from '../../user.entity'
 import { UserDataBuilder } from '../../testing/helpers/user-data-builder'
 
@@ -19,9 +18,16 @@ describe('UserEntity unit test', () => {
     expect(sut.props.createdAt).toBeInstanceOf(Date)
   })
 
-  it('Gettter test of name', () => {
+  it('Gettter test of field name', () => {
     expect(sut.props.name).toBeDefined()
     expect(sut.props.name).toEqual(props.name)
+    expect(typeof sut.props.name).toBe('string')
+  })
+
+  it('Settter test of field name', () => {
+    sut.updateName('other name')
+
+    expect(sut.props.name).toEqual('other name')
     expect(typeof sut.props.name).toBe('string')
   })
 
@@ -34,6 +40,13 @@ describe('UserEntity unit test', () => {
   it('Gettter test of password', () => {
     expect(sut.props.password).toBeDefined()
     expect(sut.props.password).toEqual(props.password)
+    expect(typeof sut.props.password).toBe('string')
+  })
+
+  it('Settter test of field password', () => {
+    sut.updatePassword('other password')
+
+    expect(sut.props.password).toEqual('other password')
     expect(typeof sut.props.password).toBe('string')
   })
 
